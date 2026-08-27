@@ -58,13 +58,16 @@ int missingNumber(vector<int>&nums){
     }
     return expectedsum-sum;
 }
-int missingNumberxor(vector<int>&nums){
-    int n=nums.size();
-    for(int i=0;i<n;i++){
-        if(nums[i]^(i+1)!=0){
-            return nums
-        }
+int missingNumberXor(vector<int>& nums) {
+    int n = nums.size();
+    int xorAll = 0;
+
+    // XOR all expected numbers and array elements together
+    for (int i = 0; i < n; i++) {
+        xorAll ^= (i + 1) ^ nums[i];
     }
+
+    return xorAll;
 }
 #include <iostream>
 #include <vector>
@@ -87,6 +90,33 @@ int missingNum(vector<int>& arr) {
     // Missing number is the XOR of xor1 and xor2
     return xor1 ^ xor2;
 }
+
+// -----------------------------------------------------------------------------------
+//find maximum consective ones
+//take two variabe current count and maxcount
+//when ever one occur increment current count and in maxcount store max of current count and maxcount
+//if not 1 set current count =0;
+//return maxcount
+
+
+    int findMaxConsecutiveOnes(vector<int>& nums) {
+        int maxCount = 0;
+        int currentCount = 0;
+
+        for (int num : nums) {
+            if (num == 1) {
+                currentCount++;
+                maxCount = max(maxCount, currentCount);
+            } else {
+                currentCount = 0;
+            }
+        }
+
+        return maxCount;
+    }
+
+
+
 
 int main() {
     vector<int> arr = {8, 2, 4, 5, 3, 7, 1}; 
