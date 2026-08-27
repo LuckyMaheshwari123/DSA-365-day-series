@@ -96,23 +96,69 @@ using namespace std;
         // Return the union vector
         return Union;
     }
-vector<int> findIntersection(const vector<int>& A, const vector<int>& B) {
-    vector<int> result;
-    int p1 = 0, p2 = 0;
+// vector<int> findIntersection(const vector<int>& A, const vector<int>& B) {
+//     vector<int> result;
+//     int p1 = 0, p2 = 0;
     
-    while (p1 < A.size() && p2 < B.size()) {
-        if (A[p1] == B[p2]) {
-            result.push_back(A[p1]);
-            p1++;
-            p2++;
-        } else if (A[p1] < B[p2]) {
-            p1++; // A's element is smaller, move forward
-        } else {
-            p2++; // B's element is smaller, move forward
+//     while (p1 < A.size() && p2 < B.size()) {
+//         if (A[p1] == B[p2]) {
+//             result.push_back(A[p1]);
+//             p1++;
+//             p2++;
+//         } else if (A[p1] < B[p2]) {
+//             p1++; // A's element is smaller, move forward
+//         } else {
+//             p2++; // B's element is smaller, move forward
+//         }
+//     }
+//     return result;
+// }
+
+#include <bits/stdc++.h>
+using namespace std;
+
+    // Function to find union of two sorted arrays using two pointers
+    vector<int> findUnionOptimal(int arr1[],int arr2[],int n,int m){
+        vector<int>Union;
+        int i=0,j=0;
+        while(i<n && j<m){
+            if(arr1[i]<arr2[j]){
+                 if (Union.empty() || Union.back() != arr1[i])//check last elemnt added in not arr1[i] to avoid copy
+                    Union.push_back(arr1[i]);
+                    i++;
+            }
+            else if(arr1[i]>arr2[j]){
+                 if (Union.empty() || Union.back() != arr2[j])
+                    Union.push_back(arr2[j]);
+                    j++;
+            }
+            else{
+                 if (Union.empty() || Union.back() != arr1[i])
+                    Union.push_back(arr1[i]);
+                    i++;
+                    j++;
+            }
         }
+        //add remaining elmenets
+        while(i<n){
+         if (Union.empty() || Union.back() != arr1[i]){
+                    Union.push_back(arr1[i]);  
+                    i++;  
+         }
+        }
+        while(j<m){
+             if (Union.empty() || Union.back() != arr2[j]){
+                    Union.push_back(arr2[j]);
+                    j++;
+             }
+        }
+    
+        return Union;
+        
     }
-    return result;
-}
+    
+
+
 
 
 
