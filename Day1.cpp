@@ -4,7 +4,7 @@ using namespace std;
 #include <climits>
 #include <algorithm>
 
-
+// sort array and last will be largest
 int findLargest(vector<int>& nums){
     //brute force
     int n=nums.size();
@@ -12,6 +12,7 @@ int findLargest(vector<int>& nums){
     return nums[n-1];
 
 }
+// optimal do a linear search
 int findLargestOptimal(vector<int>&nums){
     int n=nums.size();
     int max=nums[0];
