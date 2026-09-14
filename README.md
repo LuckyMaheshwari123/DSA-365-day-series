@@ -5,8 +5,9 @@ Order should be Like that
 #Linked List
 #string
 #Binary search
+#Bit Manipulation
 #stack and Queues
 #Recursion
 
-//solve till medium pattern and then revise all stuff and then move to next data strcutrue and algo
+solve till medium pattern and then revise all stuff and then move to next data strcutrue and algo
 
