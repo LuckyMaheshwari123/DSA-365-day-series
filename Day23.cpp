@@ -213,6 +213,24 @@ void insertbeforeNode(Node*node,int val){
         node->previous=newNode;
 }
 
+Node*reverseDoublyLL(Node*head){
+    Node*start=head;
+    Node*end=head;
+    while(end->next!=nullptr){
+        end=end->next;
+
+    }
+   while(start!=end && start->previous!=end){
+        int temp=start->data;
+        start->data=end->data;
+        end->data=temp;
+        start=start->next;
+        end=end->previous;
+   }
+   return head;
+
+}
+
 int main(){
     vector<int>number={1,2,3,4,5};
     Node*result= convertarrytoDLL(number);
